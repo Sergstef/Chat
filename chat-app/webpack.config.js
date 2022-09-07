@@ -1,28 +1,43 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
 
 module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    print: './src/print.js',
+    hot: 'webpack/hot/dev-server.js',
+    client: 'webpack-dev-server/client/index.js?hot=true&live-reload=true',
   },
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    hot: true,
+    client: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Cashing',
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
   optimization: {
+    moduleIds: 'deterministic',
     runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   module: {
     rules: [
