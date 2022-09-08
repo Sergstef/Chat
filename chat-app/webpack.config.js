@@ -5,19 +5,18 @@ const webpack = require("webpack");
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.js',
+    index: './src/index.tsx',
     hot: 'webpack/hot/dev-server.js',
     client: 'webpack-dev-server/client/index.js?hot=true&live-reload=true',
   },
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
-    hot: true,
     client: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Cashing',
+      template: './public/index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -42,6 +41,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
@@ -55,4 +59,7 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  }
 };
