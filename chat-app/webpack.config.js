@@ -16,7 +16,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Cashing',
-      template: './public/index.html'
+      template: './public/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
