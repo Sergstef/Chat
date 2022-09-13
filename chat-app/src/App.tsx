@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './test.scss';
 
 const App = () => <div className="App">
   <header className="App-header">
@@ -15,6 +16,9 @@ const App = () => <div className="App">
     >
       Learn React
     </a>
+    <div className="test">
+      <a href="">asjdgkasjdgkasjdgajksdga</a>
+    </div>
   </header>
 </div>;
 

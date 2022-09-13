@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkchat_app=self.webpackChunkchat_app||[]).push([["client"],{},function(n){n.O(0,["vendors"],(function(){return c=199,n(n.s=c);var c}));n.O()}]);

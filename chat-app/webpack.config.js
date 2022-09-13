@@ -1,6 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require("webpack");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+
+const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   mode: 'development',
@@ -11,14 +17,30 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
+    static: './dist',
+    hot: isDev,
     client: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Cashing',
       template: './public/index.html',
+      minify: {
+        collapseWhitespace: !isDev
+      }
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'public/favicon.ico'),
+          to: path.resolve(__dirname, 'dist')
+        }
+      ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    })
   ],
   output: {
     filename: '[name].[contenthash].js',
@@ -37,6 +59,13 @@ module.exports = {
         },
       },
     },
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
+      }),
+      new CssMinimizerPlugin(),
+    ],
   },
   module: {
     rules: [
@@ -47,7 +76,24 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {},
+          },
+          "css-loader",
+        ],
+      },
+      {
+        test: /\.scss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {},
+          },
+          "css-loader",
+          "scss-loader"
+        ],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
