@@ -1,9 +1,10 @@
-const username = 'James'
-const person = {first: username}
+const name = 'James'
+const person = {first: name}
 console.log(person)
 
-const sayHelloLinting = (fName) => {
-
+const sayHelloLinting = (fName: any) => {
 console.log(`Hello linting, ${fName}`);
 
 };
+
+export {}
