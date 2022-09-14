@@ -11,20 +11,20 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.tsx',
+    index: './chat-app/src/index.tsx',
     hot: 'webpack/hot/dev-server.js',
     client: 'webpack-dev-server/client/index.js?hot=true&live-reload=true',
   },
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
+    static: './chat-app/dist',
     hot: isDev,
     client: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Cashing',
-      template: './public/index.html',
+      template: './chat-app/public/index.html',
       minify: {
         collapseWhitespace: !isDev
       }
@@ -33,8 +33,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, 'public/favicon.ico'),
-          to: path.resolve(__dirname, 'dist')
+          from: path.resolve(__dirname, 'chat-app/public/favicon.ico'),
+          to: path.resolve(__dirname, 'chat-app/dist')
         }
       ]
     }),
@@ -44,7 +44,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'chat-app/dist'),
     clean: true,
   },
   optimization: {
