@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^29.0.0",
     "@types/node": "^18.7.15",
+    "html-webpack-plugin": "^5.5.0",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,8 +22,8 @@
     "build": "cross-env NODE_ENV=production webpack",
     "eject": "cross-env NODE_ENV=development react-scripts eject",
     "server": "node backend/index.js",
-    "lint": "eslint \"chat-app/src/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint --fix \"chat-app/src/**/*.{ts,tsx}\""
+    "lint": "eslint \"chat-app/src/**/*.{ts,tsx,js,jsx}\"",
+    "lint:fix": "eslint --fix \"chat-app/src/**/*.{ts,tsx,js,jsx}\""
   },
   "eslintConfig": {
     "extends": [
@@ -56,8 +57,8 @@
     "eslint": "^8.23.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",

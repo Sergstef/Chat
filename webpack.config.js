@@ -1,10 +1,11 @@
 const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require("webpack");
+const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -26,21 +27,21 @@ module.exports = {
       title: 'Cashing',
       template: './chat-app/public/index.html',
       minify: {
-        collapseWhitespace: !isDev
-      }
+        collapseWhitespace: !isDev,
+      },
     }),
     new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'chat-app/public/favicon.ico'),
-          to: path.resolve(__dirname, 'chat-app/dist')
-        }
-      ]
+          to: path.resolve(__dirname, 'chat-app/dist'),
+        },
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
-    })
+    }),
   ],
   output: {
     filename: '[name].[contenthash].js',
@@ -81,7 +82,7 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {},
           },
-          "css-loader",
+          'css-loader',
         ],
       },
       {
@@ -91,8 +92,8 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {},
           },
-          "css-loader",
-          "sass-loader"
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
@@ -107,5 +108,5 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-  }
+  },
 };
