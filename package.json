@@ -20,7 +20,9 @@
     "test": "cross-env NODE_ENV=development echo \"Error: no test specified\" && exit 1",
     "build": "cross-env NODE_ENV=production webpack",
     "eject": "cross-env NODE_ENV=development react-scripts eject",
-    "server": "node backend/index.js"
+    "server": "node backend/index.js",
+    "lint": "eslint \"chat-app/src/**/*.{ts,tsx}\"",
+    "lint:fix": "eslint --fix \"chat-app/src/**/*.{ts,tsx}\""
   },
   "eslintConfig": {
     "extends": [
@@ -45,10 +47,22 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
     "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-minimizer-webpack-plugin": "^4.1.0",
     "csv-loader": "^3.0.5",
+    "eslint": "^8.23.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "express": "^4.18.1",
     "mini-css-extract-plugin": "^2.6.1",
     "sass": "^1.54.9",
     "sass-loader": "^13.0.2",
@@ -59,7 +73,6 @@
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.10.1",
-    "xml-loader": "^1.2.1",
-    "express": "^4.18.1"
+    "xml-loader": "^1.2.1"
   }
 }
