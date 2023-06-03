@@ -1,4 +1,9 @@
 # Chat
+
+В этом проекте еще ничего нет. Здесь я только пробовал настраивать с нуля проект, подключать webpack и т.д.
+
+
+
 extensions for vs code: 
 -Highlight Matching Tag
 -Auto Rename Tag
